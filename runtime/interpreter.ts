@@ -1,8 +1,8 @@
 import { Token, TokenType } from "../frontend/lexer.ts";
 
 export function Interpret(tokens: Token[]) {
-    const tape = [0];
-    const pointer = 0;
+    const tape = Array(30000).fill(0);
+    let pointer = 0;
 
     for (const token of tokens) {
         switch (token.type) {
