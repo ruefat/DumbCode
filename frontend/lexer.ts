@@ -27,13 +27,11 @@ export function tokenize(input: string): Token[] {
             tokens.push(token(sourceCode.shift(), TokenType.SUBTRACT));
         } else if (sourceCode[0] === '.') {
             tokens.push(token(sourceCode.shift(), TokenType.OUTPUT));
-        } else {
+        } else if (sourceCode[0].trim() === '') continue; // Ignore whitespace 
+        else {
             throw new Error(`Unexpected character: ${sourceCode[0]}`);
         }
     }
 
     return tokens;
 }
-
-// Just for testing
-console.log(tokenize("/"));
